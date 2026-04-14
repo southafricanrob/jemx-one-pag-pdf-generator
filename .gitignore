@@ -8,3 +8,4 @@ output
 
 *.tsbuildinfo
 vite.config.ts.timestamp-*
+.DS_Store

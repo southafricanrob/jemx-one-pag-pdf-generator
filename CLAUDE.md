@@ -16,16 +16,20 @@ npm run build      # Production build
 
 ## Architecture
 
-**The pipeline:** Author React components → preview in browser → Puppeteer captures the Chrome render as a PDF. This guarantees the PDF matches the browser exactly — gradients, backdrop-filter, custom fonts all preserved.
+**The pipeline:** Author React components → preview in browser → Puppeteer screenshots each `.page` element → `pdf-lib` assembles screenshots into an A4 PDF. This guarantees the PDF matches the browser exactly — gradients, backdrop-filter, custom fonts all preserved.
+
+**Why screenshots, not `page.pdf()`?** Chrome's print/PDF pipeline (`page.pdf()`) drops `backdrop-filter`, misrenders flex layouts, and strips some gradient effects. The screenshot approach captures exactly what Chrome paints on screen, bypassing the print renderer entirely. Do not switch back to `page.pdf()`.
 
 **Key files:**
 - `src/styles/tokens.css` — Single source of truth for the design system. Every colour, gradient, radius, shadow, and glow from `jemx-design-system.md` as CSS custom properties. Components reference tokens exclusively, never raw hex values.
-- `src/components/Page.tsx` — The A4 page container (210mm × 297mm, 20mm padding). Each `<Page>` = one physical PDF page. Uses CSS `breakAfter: 'page'` for Puppeteer page breaks. Set `pageBreakAfter={false}` on the last page to avoid a trailing blank.
+- `src/components/Page.tsx` — The A4 page container (210mm × 297mm, 20mm padding). Each `<Page>` = one physical PDF page. The `.page` CSS class is used by the PDF script to find and screenshot each page element.
 - `src/documents/` — Each file is a complete document composed of `<Page>` components. `App.tsx` renders the active document.
-- `scripts/generate-pdf.ts` — Puppeteer script. Critical settings: `printBackground: true` (without it Chrome strips all backgrounds), zero margins (Page handles its own padding), `document.fonts.ready` await (prevents fallback font capture).
+- `scripts/generate-pdf.ts` — Puppeteer script. Screenshots each `.page` element at 3x device scale, then assembles into a PDF via `pdf-lib` at A4 point dimensions (595.28 × 841.89pt). Waits for `document.fonts.ready` before capture.
 - `jemx-design-system.md` — The reference spec. When adding tokens to `tokens.css`, values come from here.
 
 **Fonts:** Inter and Manrope via Google Fonts `@import`. JetBrains Mono self-hosted from `public/fonts/` (woff2).
+
+**Images/Logos:** Shared assets go in `public/images/`. Reference as `/images/filename.ext` in components (e.g. `<img src="/images/logo.svg" />`). Puppeteer loads these from the dev server during PDF generation.
 
 ## Conventions
 

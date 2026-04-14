@@ -1,5 +1,5 @@
-import { SampleDocument } from './documents/SampleDocument';
+import { ExecutiveAISession } from './documents/ExecutiveAISession';
 
 export function App() {
-  return <SampleDocument />;
+  return <ExecutiveAISession />;
 }
