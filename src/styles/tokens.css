@@ -1,0 +1,75 @@
+:root {
+  /* ── Core Colours ── */
+  --navy-900: #03131E;
+  --navy-850: #0d1b27;
+  --navy-800: #062133;
+  --cream-50: #FFF7EC;
+  --paper: #FCFCFC;
+  --ink-800: #333333;
+
+  /* ── Accent Colours ── */
+  --coral-500: #FF697F;
+  --coral-400: #FF8A9C;
+  --violet-500: #564FFF;
+  --violet-400: rgb(118, 112, 255);
+  --emerald-400: rgb(74, 222, 128);
+
+  /* ── Functional Colours ── */
+  --border-light: rgb(230, 233, 238);
+  --border-contrast: rgba(6, 33, 51, 0.18);
+  --overlay: rgba(6, 33, 51, 0.65);
+  --border-dark: rgba(255, 255, 255, 0.08);
+  --border-dark-hover: rgba(255, 105, 127, 0.2);
+
+  /* ── Gradients ── */
+  --gradient-ai: linear-gradient(135deg, #FF697F 0%, #564FFF 100%);
+  --gradient-ai-hot: linear-gradient(135deg, #FF8A9C 0%, #FF697F 40%, #C84DFF 100%);
+  --gradient-coral-violet: linear-gradient(135deg, rgba(255,105,127,1) 0%, rgba(86,79,255,1) 100%);
+  --gradient-section-divider: linear-gradient(90deg, transparent 0%, rgba(255,105,127,0.3) 20%, rgba(86,79,255,0.3) 80%, transparent 100%);
+
+  /* ── Typography ── */
+  --font-primary: 'Inter', sans-serif;
+  --font-secondary: 'Manrope', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --letter-spacing-tight: -0.02em;
+
+  /* ── Border Radii ── */
+  --radius-sm: 16px;
+  --radius-md: 24px;
+  --radius-lg: 30px;
+  --radius-xl: 50px;
+  --radius-pill: 9999px;
+
+  /* ── Shadows (light backgrounds) ── */
+  --shadow-elev-1: 0 2px 6px rgba(6, 33, 51, 0.05);
+  --shadow-elev-2: 0 6px 18px rgba(6, 33, 51, 0.08);
+  --shadow-elev-3: 0 12px 32px rgba(6, 33, 51, 0.12);
+
+  /* ── Glows ── */
+  --glow-coral: 0 0 30px -5px rgba(255, 105, 127, 0.4);
+  --glow-violet: 0 0 30px -5px rgba(86, 79, 255, 0.4);
+  --glow-ai: 0 0 40px -10px rgba(255, 105, 127, 0.3), 0 0 60px -20px rgba(86, 79, 255, 0.2);
+
+  /* ── A4 Page Dimensions ── */
+  --page-width: 210mm;
+  --page-height: 297mm;
+  --page-padding: 20mm;
+  --page-content-width: 170mm;
+
+  /* ── Backgrounds ── */
+  --dot-grid-dark: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+  --dot-grid-light: radial-gradient(rgba(6,33,51,0.04) 1px, transparent 1px);
+  --dot-grid-size: 24px 24px;
+
+  /* ── Glass Card (dark) ── */
+  --glass-dark-bg: rgba(255, 255, 255, 0.04);
+  --glass-dark-blur: blur(12px);
+  --glass-dark-border: 1px solid rgba(255, 255, 255, 0.08);
+  --glass-dark-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+
+  /* ── Glass Card (light) ── */
+  --glass-light-bg: rgba(255, 255, 255, 0.65);
+  --glass-light-blur: blur(4px);
+  --glass-light-border: 1px solid rgba(255, 255, 255, 0.4);
+  --glass-light-shadow: 0 8px 32px rgba(6, 33, 51, 0.08);
+}

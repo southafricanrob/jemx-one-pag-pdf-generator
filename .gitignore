@@ -1,0 +1,10 @@
+node_modules
+dist
+output
+
+*.local
+.env
+.env.*
+
+*.tsbuildinfo
+vite.config.ts.timestamp-*

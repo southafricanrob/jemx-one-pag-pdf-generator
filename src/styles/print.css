@@ -1,0 +1,12 @@
+@media print {
+  body {
+    background: none;
+    padding: 0;
+    gap: 0;
+  }
+
+  .page {
+    box-shadow: none !important;
+    margin: 0;
+  }
+}
