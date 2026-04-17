@@ -1,5 +1,5 @@
-import { ExecutiveAISession } from './documents/ExecutiveAISession';
+import { ExecutiveAISession2options } from './documents/ExecutiveAISession2options';
 
 export function App() {
-  return <ExecutiveAISession />;
+  return <ExecutiveAISession2options />;
 }

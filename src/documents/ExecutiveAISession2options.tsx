@@ -20,14 +20,14 @@ function StatItem({
       textAlign: 'center',
       display: 'flex',
       flexDirection: 'column',
-      gap: '4px',
+      gap: '3px',
     }}
     >
       <div
         style={{
           fontFamily: 'var(--font-primary)',
           fontWeight: 700,
-          fontSize: '16px',
+          fontSize: '14px',
           color: 'var(--coral-500)',
           lineHeight: 1.1,
         }}
@@ -38,9 +38,9 @@ function StatItem({
         style={{
           fontFamily: 'var(--font-primary)',
           fontWeight: 600,
-          fontSize: '10px',
+          fontSize: '9px',
           color: 'var(--cream-50)',
-          marginTop: '4px',
+          marginTop: '3px',
         }}
       >
         {label}
@@ -49,12 +49,56 @@ function StatItem({
         style={{
           fontFamily: 'var(--font-secondary)',
           fontWeight: 400,
-          fontSize: '8px',
+          fontSize: '7.5px',
           opacity: 0.7,
           marginTop: '1px',
         }}
       >
         {sublabel}
+      </div>
+    </div>
+  );
+}
+
+function PricingTier({
+  tierLabel,
+  price,
+  duration,
+  durationSublabel,
+  capacity,
+  capacitySublabel,
+}: {
+  tierLabel: string;
+  price: string;
+  duration: string;
+  durationSublabel: string;
+  capacity: string;
+  capacitySublabel: string;
+}) {
+  return (
+    <div>
+      <div
+        style={{
+          fontFamily: 'var(--font-primary)',
+          fontWeight: 600,
+          fontSize: '8px',
+          letterSpacing: '0.08em',
+          textTransform: 'uppercase',
+          opacity: 0.5,
+          marginBottom: '8px',
+        }}
+      >
+        {tierLabel}
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          gap: '10px',
+        }}
+      >
+        <StatItem value={price} label="Investment" sublabel="Excl. VAT" />
+        <StatItem value={duration} label="Duration" sublabel={durationSublabel} />
+        <StatItem value={capacity} label="Capacity" sublabel={capacitySublabel} />
       </div>
     </div>
   );
@@ -158,7 +202,7 @@ function DeliverableItem({
   );
 }
 
-export function ExecutiveAISession() {
+export function ExecutiveAISession2options() {
   return (
     <Page
       background="dark"
@@ -225,7 +269,7 @@ export function ExecutiveAISession() {
           }}
         >
           {/* Left: Title */}
-          <div style={{ width: '58%' }}>
+          <div style={{ width: '55%' }}>
             <h1
               style={{
                 fontFamily: 'var(--font-primary)',
@@ -255,40 +299,53 @@ export function ExecutiveAISession() {
               Your leadership team will leave with a clear understanding of where
               AI creates value in your business — and the confidence to act on it.
             </p>
+            <p
+              style={{
+                fontFamily: 'var(--font-secondary)',
+                fontSize: '10px',
+                opacity: 0.55,
+                lineHeight: 1.5,
+                marginTop: '8px',
+              }}
+            >
+              In-person at your offices. Limited engagements per quarter.
+            </p>
           </div>
 
-          {/* Right: Stats card */}
+          {/* Right: Two-tier pricing card */}
           <GlassCard
             style={{
-              padding: '18px 22px',
-              width: '42%',
+              padding: '14px 18px',
+              width: '45%',
               boxSizing: 'border-box',
             }}
           >
+            <PricingTier
+              tierLabel="Full Session"
+              price="R30K"
+              duration="4 Hrs"
+              durationSublabel="Focused session"
+              capacity="Up to 10"
+              capacitySublabel="Leadership team"
+            />
+
             <div
               style={{
-                display: 'flex',
-                gap: '12px',
-                marginBottom: '14px',
+                height: '1px',
+                background: 'rgba(255, 255, 255, 0.08)',
+                margin: '10px 0',
               }}
-            >
-              <StatItem value="R50K" label="Investment" sublabel="Excl. VAT" />
-              <StatItem value="4 Hrs" label="Duration" sublabel="Focused session" />
-              <StatItem value="Up to 10" label="Capacity" sublabel="Leadership team" />
-            </div>
-            <div
-              style={{
-                borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-                paddingTop: '12px',
-                fontFamily: 'var(--font-secondary)',
-                fontSize: '10px',
-                opacity: 0.7,
-                lineHeight: 1.5,
-              }}
-            >
-              In-person at your offices. A premium engagement with limited
-              availability per quarter.
-            </div>
+            />
+
+            <PricingTier
+              tierLabel="Essentials"
+              price="R20K"
+              duration="2 Hrs"
+              durationSublabel="Condensed session"
+              capacity="Up to 10"
+              capacitySublabel="Leadership team"
+            />
+
           </GlassCard>
         </div>
 
@@ -367,7 +424,7 @@ export function ExecutiveAISession() {
               marginTop: '6px',
             }}
           >
-            A 4-hour, in-person working session for up to 10 members of your
+            In-person working sessions for up to 10 members of your
             leadership team.
           </p>
         </div>
@@ -452,7 +509,7 @@ export function ExecutiveAISession() {
           }}
         >
           {/* Left: Quote */}
-          <div style={{ width: '50%' }}>
+          <div style={{ width: '69%' }}>
             <span
               style={{
                 fontFamily: 'var(--font-primary)',
@@ -477,7 +534,10 @@ export function ExecutiveAISession() {
                 lineHeight: 1.5,
               }}
             >
-If you get the chance to spend some time with the JemX team on AI, take it. I haven't seen another leadership team further ahead.            </p>
+              If you get the chance to spend some time with the JemX team on AI, take it.
+              <br />
+              I haven't seen another leadership team further ahead.
+            </p>
             <p
               style={{
                 fontFamily: 'var(--font-secondary)',
@@ -490,20 +550,20 @@ If you get the chance to spend some time with the JemX team on AI, take it. I ha
             </p>
           </div>
 
-          {/* Right: Trust Logos */}
+          {/* Right: Trust Logos (stacked) */}
           <div
             style={{
-              width: '50%',
+              width: '31%',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              gap: '12px',
+              gap: '10px',
             }}
           >
             <span
               style={{
                 fontFamily: 'var(--font-secondary)',
-                fontSize: '9px',
+                fontSize: '8px',
                 opacity: 0.55,
               }}
             >
@@ -511,26 +571,27 @@ If you get the chance to spend some time with the JemX team on AI, take it. I ha
             </span>
             <div
               style={{
-                display: 'flex',
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                gap: '10px',
+                justifyItems: 'center',
                 alignItems: 'center',
-                justifyContent: 'center',
-                gap: '20px',
               }}
             >
               <img
                 src="/images/stallion-logo.png"
                 alt="Stallion"
-                style={{ height: '30px', opacity: 0.7, filter: 'brightness(0) invert(1)' }}
+                style={{ height: '22px', opacity: 0.7, filter: 'brightness(0) invert(1)' }}
               />
               <img
                 src="/images/phangela-logo.png"
                 alt="Phangela"
-                style={{ height: '18px', opacity: 0.7, filter: 'brightness(0) invert(1)' }}
+                style={{ height: '14px', opacity: 0.7, filter: 'brightness(0) invert(1)' }}
               />
               <img
                 src="/images/excellerate-logo.png"
                 alt="Excellerate"
-                style={{ height: '16px', opacity: 0.7, filter: 'brightness(0) invert(1)' }}
+                style={{ height: '12px', opacity: 0.7, filter: 'brightness(0) invert(1)' }}
               />
               <img
                 src="/images/bootlegger-logo.png"
